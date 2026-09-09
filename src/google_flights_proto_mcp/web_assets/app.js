@@ -22,16 +22,16 @@ function element(tag, className, text) {
   return node;
 }
 
-function statusClass(status) {
-  if (status === "DEAL") return "deal";
-  if (status === "BELOW MEDIAN") return "below";
-  return "hold";
-}
-
 function friendlyStatus(status) {
   if (status === "DEAL") return "Deal";
   if (status === "BELOW MEDIAN") return "Below median";
   return "Watch";
+}
+
+function statusClass(status) {
+  if (status === "DEAL") return "deal";
+  if (status === "BELOW MEDIAN") return "below";
+  return "watch";
 }
 
 function formatChecked(value) {
@@ -39,67 +39,74 @@ function formatChecked(value) {
   return Number.isNaN(parsed.getTime()) ? value : dateTime.format(parsed);
 }
 
-function makeChip(text, preferred = false) {
-  return element("span", `chip${preferred ? " preferred" : ""}`, text);
+function makeTag(text, className = "") {
+  return element("span", `tag${className ? ` ${className}` : ""}`, text);
 }
 
-function makeCard(option) {
-  const card = element("article", `flight-card${option.rank === 1 ? " rank-one" : ""}`);
-  card.dataset.status = option.status;
-  card.dataset.direct = option.stops === 0 ? "true" : "false";
+function makeFareRow(option) {
+  const row = element("article", `flight-row${option.rank === 1 ? " top-pick" : ""}`);
+  row.dataset.status = option.status;
+  row.dataset.direct = option.stops === 0 ? "true" : "false";
 
-  const top = element("div", "card-top");
-  const titleWrap = element("div");
-  titleWrap.append(
-    element("span", "option-label", `Option ${option.rank}`),
+  const destination = element("div", "destination-cell");
+  const destinationTitle = element("div", "destination-title");
+  destinationTitle.append(
+    element("span", "rank", `${option.rank}`),
     element("h3", "destination", option.destination),
+    element("span", "airport", option.airport),
   );
-  const identity = element("div", "identity-badges");
-  if (option.on_bucket_list) identity.append(element("span", "bucket-badge", "★ Bucket list"));
-  identity.append(element("span", "airport", option.airport));
-  top.append(titleWrap, identity);
+  destination.append(destinationTitle);
 
-  const fareRow = element("div", "fare-row");
-  const fare = element("div", "fare");
-  fare.append(document.createTextNode(euro.format(option.price)), element("small", "", " return"));
-  fareRow.append(fare, element("span", `status-pill ${statusClass(option.status)}`, friendlyStatus(option.status)));
+  if (option.on_bucket_list) {
+    const names = option.bucket_list_labels.map((label) => label.name).join(" · ");
+    destination.append(element("div", "bucket-label", `Bucket list · ${names}`));
+  }
 
-  const comparison = element("div", "comparison");
-  const comparisonText = element("div", "comparison-text");
-  const percent = Math.round(option.percent_below_median * 100);
-  comparisonText.append(
-    element("span", "", percent >= 0 ? `${percent}% below median` : `${Math.abs(percent)}% above median`),
-    element("span", "", `median ${euro.format(option.median)}`),
-  );
-  const track = element("div", "comparison-track");
-  const fill = element("div", `comparison-fill${percent < 0 ? " over" : ""}`);
-  fill.style.width = `${Math.max(8, Math.min(100, (option.price / option.median) * 100))}%`;
-  track.append(fill);
-  comparison.append(comparisonText, track);
-
-  const detail = element("p", "flight-detail", option.outbound_example);
-  const chips = element("div", "chips");
-  option.bucket_list_labels.forEach((label) => {
-    chips.append(makeChip(`Bucket: ${label.name} (${label.type})`, true));
-  });
+  const tags = element("div", "tags");
   const bucketNames = new Set(option.bucket_list_labels.map((label) => label.name));
   option.categories
     .filter((category) => !bucketNames.has(category))
-    .slice(0, 3)
-    .forEach((category) => chips.append(makeChip(category)));
-  if (option.preferred_timing_categories.length) chips.append(makeChip("Right season", true));
-  chips.append(makeChip(option.stops === 0 ? "Direct" : `${option.stops} stop`));
+    .slice(0, 2)
+    .forEach((category) => tags.append(makeTag(category)));
+  if (option.preferred_timing_categories.length) tags.append(makeTag("Right season", "season"));
+  if (tags.children.length) destination.append(tags);
 
-  const action = element("div", "card-action");
-  const checked = element("span", "checked", `Quoted ${formatChecked(option.checked_at)}`);
-  const link = element("a", "google-link", "Check on Google ↗");
+  const flight = element("div", "flight-cell");
+  flight.append(
+    element("span", "mobile-label", "Outbound"),
+    element("strong", "flight-example", option.outbound_example),
+    element("span", "flight-meta", option.stops === 0 ? "Direct" : `${option.stops} stop`),
+  );
+
+  const price = element("div", "price-cell");
+  price.append(
+    element("span", "mobile-label", "Return fare"),
+    element("strong", "fare", euro.format(option.price)),
+    element("span", `status ${statusClass(option.status)}`, friendlyStatus(option.status)),
+  );
+
+  const comparison = element("div", "comparison-cell");
+  const percent = Math.round(option.percent_below_median * 100);
+  const comparisonText = percent > 0
+    ? `${percent}% below`
+    : percent < 0
+      ? `${Math.abs(percent)}% above`
+      : "At median";
+  comparison.append(
+    element("span", "mobile-label", "Compared with median"),
+    element("strong", percent > 0 ? "saving" : "", comparisonText),
+    element("span", "median", `${euro.format(option.median)} median`),
+  );
+
+  const action = element("div", "action-cell");
+  const link = element("a", "google-link", "View flight");
   link.href = option.search_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  action.append(checked, link);
+  action.append(link, element("span", "checked", `Quoted ${formatChecked(option.checked_at)}`));
 
-  card.append(top, fareRow, comparison, detail, chips, action);
-  return card;
+  row.append(destination, flight, price, comparison, action);
+  return row;
 }
 
 function matchesFilter(option) {
@@ -107,6 +114,14 @@ function matchesFilter(option) {
   if (state.filter === "below") return option.percent_below_median > 0;
   if (state.filter === "direct") return option.stops === 0;
   return true;
+}
+
+function makeListHeader() {
+  const header = element("div", "list-header");
+  ["Destination", "Outbound example", "Return fare", "vs median", ""].forEach((label) => {
+    header.append(element("span", "", label));
+  });
+  return header;
 }
 
 function renderWeekends() {
@@ -117,21 +132,32 @@ function renderWeekends() {
   state.payload.weekends.forEach((weekend, index) => {
     const matches = weekend.options.filter(matchesFilter);
     if (!matches.length && state.filter !== "all") return;
+
     visibleSections += 1;
     const section = element("section", "weekend-section");
     section.id = `weekend-${index + 1}`;
+
     const heading = element("div", "weekend-heading");
     heading.append(
       element("h2", "", weekend.label),
-      element("p", "", `${matches.length} option${matches.length === 1 ? "" : "s"} shown`),
+      element("span", "option-count", `${matches.length} option${matches.length === 1 ? "" : "s"}`),
     );
-    const grid = element("div", matches.length ? "flight-grid" : "empty-filter");
+
+    const list = element("div", "flight-list");
     if (matches.length) {
-      matches.forEach((option) => grid.append(makeCard(option)));
+      list.append(makeListHeader());
+      matches.forEach((option) => list.append(makeFareRow(option)));
     } else {
-      grid.textContent = `No realistic return fare under ${euro.format(state.payload.summary.max_return_price)} was found for this weekend.`;
+      list.append(
+        element(
+          "div",
+          "empty-filter",
+          `No realistic return fare under ${euro.format(state.payload.summary.max_return_price)} was found for this weekend.`,
+        ),
+      );
     }
-    section.append(heading, grid);
+
+    section.append(heading, list);
     container.append(section);
   });
 
@@ -145,33 +171,31 @@ function renderSummary(refresh) {
   const summary = state.payload.summary;
   document.querySelector("#stat-below").textContent = `${summary.below_median}/${summary.options}`;
   document.querySelector("#stat-below-note").textContent = `of ${summary.options} fares under ${euro.format(summary.max_return_price)}`;
-  document.querySelector("#hero-weekends").textContent = summary.weekends;
-  document.querySelector("#hero-options").textContent = summary.options;
+
   if (summary.best_saving) {
     document.querySelector("#stat-saving").textContent = `${Math.round(summary.best_saving.percent * 100)}%`;
     document.querySelector("#stat-saving-place").textContent = `${summary.best_saving.destination} · ${summary.best_saving.weekend}`;
   } else {
     document.querySelector("#stat-saving").textContent = "—";
-    document.querySelector("#stat-saving-place").textContent = "No eligible fares found";
+    document.querySelector("#stat-saving-place").textContent = "No eligible fares";
   }
-  document.querySelector("#stat-updated").textContent = formatChecked(state.payload.generated_at);
-  document.querySelector("#stat-age").textContent = "Per-row quote times shown below";
 
+  document.querySelector("#stat-updated").textContent = formatChecked(state.payload.generated_at);
   const live = document.querySelector("#live-status");
   live.className = "live-status ready";
   if (refresh.running) {
-    live.querySelector("span:last-child").textContent = "Refreshing prices now";
+    live.querySelector("span:last-child").textContent = "Refreshing prices";
   } else if (refresh.last_error) {
     live.className = "live-status error";
-    live.querySelector("span:last-child").textContent = "Last refresh failed · showing saved data";
+    live.querySelector("span:last-child").textContent = "Showing saved data";
   } else {
-    live.querySelector("span:last-child").textContent = "Hourly price refresh active";
+    live.querySelector("span:last-child").textContent = "Hourly refresh active";
   }
 }
 
 function populateJump() {
   const select = document.querySelector("#weekend-select");
-  select.replaceChildren(element("option", "", "Choose a weekend"));
+  select.replaceChildren(element("option", "", "All weekends"));
   select.options[0].value = "";
   state.payload.weekends.forEach((weekend, index) => {
     const option = element("option", "", weekend.label);

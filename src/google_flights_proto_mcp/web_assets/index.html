@@ -3,76 +3,76 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#102a2a">
-    <meta name="description" content="Three live-value flight ideas for every available Lisbon weekend.">
-    <title>Fli — Lisbon semester deals</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Ranked return fares from Lisbon for every available autumn weekend.">
+    <title>Fli — Lisbon weekend fares</title>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/styles.css">
     <script src="/assets/app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Fli home">
-        <span class="brand-mark" aria-hidden="true">F</span>
-        <span>fli</span>
-      </a>
-      <div class="live-status" id="live-status" aria-live="polite">
-        <span class="status-dot"></span>
-        <span>Loading prices</span>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Fli home">
+          <span class="brand-mark" aria-hidden="true">F</span>
+          <span>Fli</span>
+        </a>
+        <a class="status-link" href="/api/status">System status</a>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">LISBON · AUTUMN 2026 · ONE ADULT</p>
-          <h1>Weekend flights<br><em>worth leaving for.</em></h1>
-          <p class="hero-intro">
-            Three considered options for every free weekend—ranked around your bucket list,
-            useful travel time, and fares below each route’s semester median.
-          </p>
+      <section class="page-heading">
+        <div>
+          <p class="kicker">Fare monitor · Autumn 2026</p>
+          <h1>Weekend flights from Lisbon</h1>
+          <p class="intro">Three ranked return options for each available weekend, capped at €250.</p>
         </div>
-        <div class="route-art" aria-hidden="true">
-          <div class="route-origin">LIS</div>
-          <div class="route-line"><span></span></div>
-          <div class="route-destination">GO</div>
-          <p><span id="hero-weekends">13</span> weekends<br><span id="hero-options">up to 39</span> possibilities</p>
+        <div class="live-status" id="live-status" aria-live="polite">
+          <span class="status-dot"></span>
+          <span>Loading prices</span>
         </div>
       </section>
 
-      <section class="summary-grid" aria-label="Deal summary">
-        <article class="summary-card featured">
-          <span class="summary-label">Below median</span>
+      <section class="summary-bar" aria-label="Fare summary">
+        <div class="summary-item">
+          <span>Below median</span>
           <strong id="stat-below">—</strong>
-          <span class="summary-note" id="stat-below-note">shortlisted fares</span>
-        </article>
-        <article class="summary-card">
-          <span class="summary-label">Biggest saving</span>
+          <small id="stat-below-note">shortlisted fares</small>
+        </div>
+        <div class="summary-item">
+          <span>Best saving</span>
           <strong id="stat-saving">—</strong>
-          <span class="summary-note" id="stat-saving-place">Waiting for data</span>
-        </article>
-        <article class="summary-card">
-          <span class="summary-label">Price snapshot</span>
+          <small id="stat-saving-place">Waiting for data</small>
+        </div>
+        <div class="summary-item wide">
+          <span>Latest snapshot</span>
           <strong class="date-stat" id="stat-updated">—</strong>
-          <span class="summary-note" id="stat-age">Hourly refresh</span>
-        </article>
+          <small id="stat-age">Quote times appear on each result</small>
+        </div>
       </section>
 
       <section class="controls" aria-label="Flight filters">
-        <div class="control-group weekend-jump">
-          <label for="weekend-select">Jump to weekend</label>
+        <div class="control-field">
+          <label for="weekend-select">Weekend</label>
           <select id="weekend-select" disabled>
             <option>Loading weekends…</option>
           </select>
         </div>
-        <div class="control-group">
+        <div class="filter-field">
           <span class="control-label">Show</span>
-          <div class="segmented" role="group" aria-label="Deal status filter">
+          <div class="segmented" role="group" aria-label="Flight filters">
             <button type="button" class="filter-button active" data-filter="all">All</button>
             <button type="button" class="filter-button" data-filter="bucket">Bucket list</button>
             <button type="button" class="filter-button" data-filter="below">Below median</button>
             <button type="button" class="filter-button" data-filter="direct">Direct</button>
           </div>
+        </div>
+        <div class="search-scope" aria-label="Search parameters">
+          <span>LIS</span>
+          <span>1 adult</span>
+          <span>Return</span>
+          <span>≤ €250</span>
         </div>
       </section>
 
@@ -83,31 +83,22 @@
       </div>
 
       <section id="weekends" class="weekends" aria-live="polite" aria-busy="true">
-        <div class="loading-card"><span></span>Loading the shortlist…</div>
+        <div class="loading-row"><span></span>Loading fares…</div>
       </section>
 
-      <section class="method-note">
-        <div>
-          <p class="eyebrow">HOW TO READ THIS</p>
-          <h2>A useful signal,<br>not a frozen fare.</h2>
-        </div>
-        <div class="method-copy">
-          <p>
-            “Median” means the middle Google Flights search-page quote for the same airport
-            across your 13 semester travel windows. It is not Google’s private historical
-            typical-price metric.
-          </p>
-          <p>
-            Every link contains the exact dates, airports, cabin and one-adult passenger count.
-            Google or the airline can still change inventory and price before checkout.
-          </p>
-        </div>
-      </section>
+      <aside class="price-note">
+        <strong>How the comparison works</strong>
+        <p>
+          The median is calculated from the Google Flights search-page quote for the same
+          airport across your 13 semester travel windows. Prices are for one adult and may
+          change before checkout.
+        </p>
+      </aside>
     </main>
 
     <footer>
-      <span>Built around weekends, not wanderlust spreadsheets.</span>
-      <a href="/api/status">System status</a>
+      <span>Fli fare monitor</span>
+      <span>Hourly refresh · Europe/Lisbon</span>
     </footer>
   </body>
 </html>
