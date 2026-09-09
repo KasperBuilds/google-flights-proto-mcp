@@ -14,6 +14,91 @@ protobuf tfs query
 It does **not** import or launch `fli-mcp`. The only browser work happens after
 HTTP discovery has reduced the result set to at most three exact itineraries.
 
+## How the protobuf reverse-engineering works
+
+Google Flights does not expose a supported public shopping API. Its web UI
+stores the search state in the `tfs` query parameter used by URLs such as:
+
+```text
+https://www.google.com/travel/flights/search?tfs=<URL_SAFE_BASE64>&hl=en&gl=PT&curr=EUR
+```
+
+The `tfs` value is a serialized Protocol Buffers message encoded with URL-safe
+Base64 and stripped of trailing `=` padding. The schema in
+[`flights.proto`](src/google_flights_proto_mcp/flights.proto) is inferred from
+the web application; it is not published or guaranteed by Google.
+
+The encoder follows this path:
+
+```text
+SearchRequest
+  -> Info protobuf
+      -> FlightData for each direction
+      -> airports, dates, stops, airlines and time filters
+      -> passengers, cabin, baggage, trip type and maximum price
+  -> SerializeToString()
+  -> URL-safe Base64 without padding
+  -> /travel/flights/search?tfs=...
+```
+
+Important inferred fields include:
+
+| Message | Field | Meaning used here |
+| --- | ---: | --- |
+| `Info` | 3 | Repeated outbound/inbound `FlightData` directions |
+| `Info` | 8 | Repeated passenger types |
+| `Info` | 9 | Cabin/seat class |
+| `Info` | 12 | Maximum fare filter |
+| `Info` | 13 | Baggage filters |
+| `Info` | 19 | Round trip or one way |
+| `FlightData` | 2 | Travel date |
+| `FlightData` | 4 | Selected physical flight legs |
+| `FlightData` | 5 | Maximum stops |
+| `FlightData` | 6 | Airline filters |
+| `FlightData` | 13 / 14 | Origin and destination airports |
+
+The schema was reconstructed by changing one Google Flights control at a
+time, decoding the resulting Base64 tokens, comparing protobuf wire tags, and
+then validating the inferred type and field number by generating a new URL.
+Unknown booking-only fields retain neutral names such as `marker_one`; the
+project does not claim semantics that have not been demonstrated.
+
+### Why complete itinerary pairing takes two searches
+
+A return fare cannot safely be produced by adding the cheapest outbound and
+cheapest inbound. Google reprices the trip after the outbound is selected.
+This project therefore:
+
+1. searches and parses the available outbound directions;
+2. embeds one selected outbound in field 4 of the outbound `FlightData`;
+3. requests the repriced inbound choices for that selection;
+4. pairs each inbound with that outbound and keeps Google's combined total;
+5. embeds every physical leg from both directions in a booking `tfs` token.
+
+This creates a deep link for one complete itinerary instead of a generic
+route/date search. Search-page prices are still discovery quotes until the
+Playwright verifier confirms the rendered total and provider handoff.
+
+### HTTP discovery is not an API
+
+The fast discovery layer requests the normal Google Flights HTML using a
+browser-compatible TLS fingerprint. It extracts the embedded `ds:1` data from
+`AF_initDataCallback`, parses both the top and other-flight groups, and rejects
+consent pages, CAPTCHA responses, malformed payloads, and airport
+substitutions. There is no stable JSON endpoint involved.
+
+Google can change the protobuf schema, the embedded array layout, consent
+handling, or anti-automation policy at any time. The parsers are defensive,
+but this integration requires monitoring and should not be treated as a
+contracted production API. Use it responsibly and comply with Google's terms
+and applicable law.
+
+The original public demonstration of this general `tfs` protobuf technique is
+the [`AWeirdDev/flights`](https://github.com/AWeirdDev/flights) project. This
+repository reimplements the schema and adds complete itinerary pairing,
+ranking, explicit verification states, MCP tools, the semester scanner, and
+the Railway dashboard.
+
 ## Install and run
 
 ```bash
