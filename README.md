@@ -1,5 +1,7 @@
 # Google Flights Protobuf MCP
 
+Reverse engineered Google Flights and coded a lil smth to help plan my flights across Europe! 
+
 A standalone MCP server for this deliberately bounded pipeline:
 
 ```text
@@ -10,9 +12,6 @@ protobuf tfs query
   -> top 1-3 exact /booking?tfs= links
   -> Playwright price + itinerary verification
 ```
-
-It does **not** import or launch `fli-mcp`. The only browser work happens after
-HTTP discovery has reduced the result set to at most three exact itineraries.
 
 ## How the protobuf reverse-engineering works
 
