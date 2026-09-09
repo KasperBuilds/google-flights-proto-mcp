@@ -1,6 +1,7 @@
 {
   "max_return_price": 250,
-  "options_per_weekend": 3,
+  "website_initial_options": 3,
+  "sheet_options_per_weekend": 3,
   "deal_thresholds": {
     "exceptional_max_ratio": 0.65,
     "unusually_cheap_max_ratio": 0.80,

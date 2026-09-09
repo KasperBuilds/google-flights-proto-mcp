@@ -86,13 +86,11 @@ def _validate_ranked(payload: dict[str, Any], expected_weekends: list[str]) -> N
 
     options = payload.get("weekend_options", [])
     counts = Counter(item["weekend"] for item in options)
-    maximum = int(payload.get("options_per_weekend", 3))
     unknown = set(counts) - set(expected_weekends)
-    overfilled = {weekend: count for weekend, count in counts.items() if count > maximum}
-    if unknown or overfilled:
-        raise RuntimeError(
-            f"Invalid weekend ranking counts: unknown={unknown}, overfilled={overfilled}"
-        )
+    if unknown:
+        raise RuntimeError(f"Invalid weekend ranking labels: unknown={unknown}")
+
+    ranks_by_weekend: dict[str, list[int]] = {weekend: [] for weekend in expected_weekends}
 
     seen: set[tuple[str, str]] = set()
     for item in options:
@@ -108,11 +106,19 @@ def _validate_ranked(payload: dict[str, Any], expected_weekends: list[str]) -> N
             raise RuntimeError(f"Non-single-passenger quote found for {key}")
         if float(item["google_total"]) > float(payload.get("max_return_price", 250)):
             raise RuntimeError(f"Over-budget quote found for {key}: {item['google_total']}")
+        ranks_by_weekend[item["weekend"]].append(int(item["option"]))
+
+    for weekend, ranks in ranks_by_weekend.items():
+        if sorted(ranks) != list(range(1, len(ranks) + 1)):
+            raise RuntimeError(f"Non-consecutive option ranks for {weekend}: {ranks}")
 
 
 def _sheet_rows(payload: dict[str, Any]) -> list[list[Any]]:
     rows = []
+    limit = int(payload.get("sheet_options_per_weekend", 3))
     for item in payload["weekend_options"]:
+        if int(item["option"]) > limit:
+            continue
         categories = ", ".join(item["categories"]) or "Value discovery"
         preferred = ", ".join(item["preferred_timing_categories"]) or "—"
         url = item["google_search_url"]

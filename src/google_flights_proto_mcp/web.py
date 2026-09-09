@@ -118,6 +118,9 @@ def build_public_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
     statuses = Counter(option["status"] for options in grouped.values() for option in options)
     all_options = [option for options in grouped.values() for option in options]
+    initial_options = int(
+        payload.get("website_initial_options", payload.get("options_per_weekend", 3))
+    )
     best_saving = (
         max(all_options, key=lambda option: option["percent_below_median"]) if all_options else None
     )
@@ -138,7 +141,11 @@ def build_public_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "summary": {
             "weekends": len(grouped),
             "options": len(all_options),
-            "max_options": len(grouped) * int(payload.get("options_per_weekend", 3)),
+            "max_options": len(all_options),
+            "initial_options_per_weekend": initial_options,
+            "initially_visible_options": sum(
+                min(initial_options, len(options)) for options in grouped.values()
+            ),
             "max_return_price": payload.get("max_return_price", 250),
             "below_median": statuses.get("DEAL", 0) + statuses.get("BELOW MEDIAN", 0),
             "best_saving": (

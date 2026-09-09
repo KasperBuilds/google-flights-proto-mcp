@@ -163,7 +163,8 @@ def rank(payload: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
 
     weekend_options = []
     max_return_price = float(config.get("max_return_price", 250))
-    options_per_weekend = int(config.get("options_per_weekend", 3))
+    website_initial_options = int(config.get("website_initial_options", 3))
+    sheet_options_per_weekend = int(config.get("sheet_options_per_weekend", 3))
     for weekend in payload["weekends"]:
         candidates = [
             item
@@ -185,7 +186,7 @@ def rank(payload: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
                 airport_order.get(item["destination"]["code"], 999),
             )
 
-        selected = sorted(candidates, key=option_key)[:options_per_weekend]
+        selected = sorted(candidates, key=option_key)
 
         for option, item in enumerate(selected, 1):
             if item["is_deal"]:
@@ -202,13 +203,14 @@ def rank(payload: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
             "Each fare is compared with the median Google Flights search-page quote for "
             "that exact destination airport across the observed semester travel windows. "
             f"Only return quotes at or below €{max_return_price:.0f} are eligible for the "
-            "weekend shortlist. This is not Google's historical typical-fare signal or "
+            "weekend results. This is not Google's historical typical-fare signal or "
             "checkout verification."
         ),
         "origin": payload["origin"],
         "passengers": payload["filters"]["adults"],
         "max_return_price": max_return_price,
-        "options_per_weekend": options_per_weekend,
+        "website_initial_options": website_initial_options,
+        "sheet_options_per_weekend": sheet_options_per_weekend,
         "weekends": [
             {
                 "label": weekend["label"],

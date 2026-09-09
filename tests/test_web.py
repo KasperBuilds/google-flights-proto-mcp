@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 
 from fastapi.testclient import TestClient
@@ -16,11 +17,31 @@ def test_public_payload_respects_budget_cap() -> None:
 
     assert payload["passengers"] == 1
     assert payload["summary"]["weekends"] == 13
-    assert payload["summary"]["options"] <= 39
-    assert all(len(weekend["options"]) <= 3 for weekend in payload["weekends"])
+    assert payload["summary"]["initial_options_per_weekend"] == 3
+    assert payload["summary"]["initially_visible_options"] == sum(
+        min(3, len(weekend["options"])) for weekend in payload["weekends"]
+    )
     assert all(
         option["price"] <= 250 for weekend in payload["weekends"] for option in weekend["options"]
     )
+
+
+def test_public_payload_keeps_options_beyond_initial_three() -> None:
+    ranked = deepcopy(load_ranked_snapshot(SEED_PATH.parent))
+    first_weekend = ranked["weekends"][0]["label"]
+    existing = [item for item in ranked["weekend_options"] if item["weekend"] == first_weekend]
+    extra = deepcopy(existing[0])
+    extra["option"] = 4
+    extra["destination"] = {"code": "ZZZ", "name": "Additional option"}
+    ranked["weekend_options"].append(extra)
+    ranked["website_initial_options"] = 3
+
+    payload = build_public_payload(ranked)
+    weekend = next(item for item in payload["weekends"] if item["label"] == first_weekend)
+
+    assert len(weekend["options"]) == 4
+    assert [option["rank"] for option in weekend["options"]] == [1, 2, 3, 4]
+    assert payload["summary"]["initial_options_per_weekend"] == 3
     assert all(
         option["search_url"].startswith("https://www.google.com/travel/flights/search?tfs=")
         for weekend in payload["weekends"]
@@ -52,6 +73,6 @@ def test_web_routes_serve_snapshot(monkeypatch, tmp_path: Path) -> None:
     assert "Weekend flights" in homepage.text
     assert 'data-filter="bucket"' in homepage.text
     assert deals.status_code == 200
-    assert deals.json()["data"]["summary"]["options"] <= 39
+    assert deals.json()["data"]["summary"]["options"] > 0
     assert health.status_code == 200
     assert manual.status_code == 403

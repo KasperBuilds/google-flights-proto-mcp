@@ -1,4 +1,4 @@
-const state = { payload: null, filter: "all" };
+const state = { payload: null, filter: "all", expandedWeekends: new Set() };
 
 const euro = new Intl.NumberFormat("en-GB", {
   style: "currency",
@@ -132,6 +132,9 @@ function renderWeekends() {
   state.payload.weekends.forEach((weekend, index) => {
     const matches = weekend.options.filter(matchesFilter);
     if (!matches.length && state.filter !== "all") return;
+    const initialLimit = state.payload.summary.initial_options_per_weekend;
+    const expanded = state.expandedWeekends.has(weekend.label);
+    const visible = expanded ? matches : matches.slice(0, initialLimit);
 
     visibleSections += 1;
     const section = element("section", "weekend-section");
@@ -140,13 +143,41 @@ function renderWeekends() {
     const heading = element("div", "weekend-heading");
     heading.append(
       element("h2", "", weekend.label),
-      element("span", "option-count", `${matches.length} option${matches.length === 1 ? "" : "s"}`),
+      element(
+        "span",
+        "option-count",
+        visible.length === matches.length
+          ? `${matches.length} option${matches.length === 1 ? "" : "s"}`
+          : `${visible.length} of ${matches.length} options`,
+      ),
     );
 
     const list = element("div", "flight-list");
     if (matches.length) {
       list.append(makeListHeader());
-      matches.forEach((option) => list.append(makeFareRow(option)));
+      visible.forEach((option) => list.append(makeFareRow(option)));
+      if (matches.length > initialLimit) {
+        const footer = element("div", "list-footer");
+        const toggle = element(
+          "button",
+          "expand-button",
+          expanded ? "Show top 3" : `Show all ${matches.length} options`,
+        );
+        toggle.type = "button";
+        toggle.addEventListener("click", () => {
+          if (expanded) {
+            state.expandedWeekends.delete(weekend.label);
+          } else {
+            state.expandedWeekends.add(weekend.label);
+          }
+          renderWeekends();
+          if (expanded) {
+            document.getElementById(`weekend-${index + 1}`)?.scrollIntoView({ block: "start" });
+          }
+        });
+        footer.append(toggle);
+        list.append(footer);
+      }
     } else {
       list.append(
         element(
@@ -230,6 +261,7 @@ document.querySelectorAll(".filter-button").forEach((button) => {
     document.querySelectorAll(".filter-button").forEach((candidate) => candidate.classList.remove("active"));
     button.classList.add("active");
     state.filter = button.dataset.filter;
+    state.expandedWeekends.clear();
     if (state.payload) renderWeekends();
   });
 });

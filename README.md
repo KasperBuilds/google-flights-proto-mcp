@@ -217,8 +217,9 @@ comparison within this scan, not Google's historical “typical price” signal.
 ## Hourly Google Sheet refresh on macOS
 
 `scripts/refresh_google_sheet.py` runs the bucket-airport scan for one adult,
-retries transient failures, recalculates route medians, reranks exactly three
-options per weekend, and overwrites only the values in `3 per Weekend!A2` and
+retries transient failures, recalculates route medians, ranks every eligible
+option, publishes the top three per weekend to the Sheet, and overwrites only
+the values in `3 per Weekend!A2` and
 `3 per Weekend!A5:N43`. Existing formatting and conditional-format rules are
 preserved. The last good Sheet remains untouched if the scan is incomplete.
 The default retry policy uses two workers and paced backoff because a complete
@@ -269,7 +270,8 @@ hour; that should be limited to the current top one to three candidates.
 The Railway-ready FastAPI dashboard serves the last successful snapshot
 immediately and refreshes prices in the background. It includes:
 
-- up to three realistic options per weekend, with a hard €250 return ceiling;
+- every realistic option found under the hard €250 return ceiling, with the
+  top three shown until a weekend is expanded;
 - exact one-adult protobuf Google Flights links;
 - hourly scanning, median recalculation, and reranking;
 - atomic snapshot publishing so blocked scans never replace good data;
