@@ -60,9 +60,16 @@
           </select>
         </div>
         <div class="filter-field">
-          <span class="control-label">Show</span>
+          <span class="control-label">Display</span>
+          <div class="segmented" role="group" aria-label="Result display">
+            <button type="button" class="view-button active" data-view="top">Top 3</button>
+            <button type="button" class="view-button" data-view="all">All options</button>
+          </div>
+        </div>
+        <div class="filter-field">
+          <span class="control-label">Filter</span>
           <div class="segmented" role="group" aria-label="Flight filters">
-            <button type="button" class="filter-button active" data-filter="all">All</button>
+            <button type="button" class="filter-button active" data-filter="all">All fares</button>
             <button type="button" class="filter-button" data-filter="bucket">Bucket list</button>
             <button type="button" class="filter-button" data-filter="below">Below median</button>
             <button type="button" class="filter-button" data-filter="direct">Direct</button>

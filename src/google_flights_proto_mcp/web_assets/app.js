@@ -1,4 +1,10 @@
-const state = { payload: null, filter: "all", expandedWeekends: new Set() };
+const state = {
+  payload: null,
+  filter: "all",
+  view: "top",
+  expandedWeekends: new Set(),
+  collapsedWeekends: new Set(),
+};
 
 const euro = new Intl.NumberFormat("en-GB", {
   style: "currency",
@@ -133,7 +139,9 @@ function renderWeekends() {
     const matches = weekend.options.filter(matchesFilter);
     if (!matches.length && state.filter !== "all") return;
     const initialLimit = state.payload.summary.initial_options_per_weekend;
-    const expanded = state.expandedWeekends.has(weekend.label);
+    const expanded = state.view === "all"
+      ? !state.collapsedWeekends.has(weekend.label)
+      : state.expandedWeekends.has(weekend.label);
     const visible = expanded ? matches : matches.slice(0, initialLimit);
 
     visibleSections += 1;
@@ -166,9 +174,17 @@ function renderWeekends() {
         toggle.type = "button";
         toggle.addEventListener("click", () => {
           if (expanded) {
-            state.expandedWeekends.delete(weekend.label);
+            if (state.view === "all") {
+              state.collapsedWeekends.add(weekend.label);
+            } else {
+              state.expandedWeekends.delete(weekend.label);
+            }
           } else {
-            state.expandedWeekends.add(weekend.label);
+            if (state.view === "all") {
+              state.collapsedWeekends.delete(weekend.label);
+            } else {
+              state.expandedWeekends.add(weekend.label);
+            }
           }
           renderWeekends();
           if (expanded) {
@@ -262,6 +278,18 @@ document.querySelectorAll(".filter-button").forEach((button) => {
     button.classList.add("active");
     state.filter = button.dataset.filter;
     state.expandedWeekends.clear();
+    state.collapsedWeekends.clear();
+    if (state.payload) renderWeekends();
+  });
+});
+
+document.querySelectorAll(".view-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".view-button").forEach((candidate) => candidate.classList.remove("active"));
+    button.classList.add("active");
+    state.view = button.dataset.view;
+    state.expandedWeekends.clear();
+    state.collapsedWeekends.clear();
     if (state.payload) renderWeekends();
   });
 });

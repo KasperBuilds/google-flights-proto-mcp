@@ -72,6 +72,8 @@ def test_web_routes_serve_snapshot(monkeypatch, tmp_path: Path) -> None:
     assert homepage.status_code == 200
     assert "Weekend flights" in homepage.text
     assert 'data-filter="bucket"' in homepage.text
+    assert 'data-view="top"' in homepage.text
+    assert 'data-view="all"' in homepage.text
     assert deals.status_code == 200
     assert deals.json()["data"]["summary"]["options"] > 0
     assert health.status_code == 200

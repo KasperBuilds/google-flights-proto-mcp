@@ -271,7 +271,8 @@ The Railway-ready FastAPI dashboard serves the last successful snapshot
 immediately and refreshes prices in the background. It includes:
 
 - every realistic option found under the hard €250 return ceiling, with the
-  top three shown until a weekend is expanded;
+  top three shown by default, a global Top 3 / All options switch, and
+  per-weekend expansion;
 - exact one-adult protobuf Google Flights links;
 - hourly scanning, median recalculation, and reranking;
 - atomic snapshot publishing so blocked scans never replace good data;
