@@ -1,0 +1,34 @@
+{
+  "origin": "LIS",
+  "currency": "EUR",
+  "language": "en",
+  "country": "PT",
+  "weekends": [
+    {"label": "19–21 Sep", "departure_date": "2026-09-19", "return_date": "2026-09-21", "outbound_earliest_hour": 6, "return_earliest_hour": 16},
+    {"label": "25–28 Sep", "departure_date": "2026-09-25", "return_date": "2026-09-28", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "2–5 Oct", "departure_date": "2026-10-02", "return_date": "2026-10-05", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "9–12 Oct", "departure_date": "2026-10-09", "return_date": "2026-10-12", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "16–19 Oct", "departure_date": "2026-10-16", "return_date": "2026-10-19", "outbound_earliest_hour": 20, "return_earliest_hour": 16},
+    {"label": "23–25 Oct", "departure_date": "2026-10-23", "return_date": "2026-10-25", "outbound_earliest_hour": 16, "return_earliest_hour": 14},
+    {"label": "30 Oct–2 Nov", "departure_date": "2026-10-30", "return_date": "2026-11-02", "outbound_earliest_hour": 20, "return_earliest_hour": 16},
+    {"label": "6–9 Nov", "departure_date": "2026-11-06", "return_date": "2026-11-09", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "20–23 Nov", "departure_date": "2026-11-20", "return_date": "2026-11-23", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "27–30 Nov", "departure_date": "2026-11-27", "return_date": "2026-11-30", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "4–7 Dec", "departure_date": "2026-12-04", "return_date": "2026-12-07", "outbound_earliest_hour": 16, "return_earliest_hour": 16},
+    {"label": "11–14 Dec", "departure_date": "2026-12-11", "return_date": "2026-12-14", "outbound_earliest_hour": 11, "return_earliest_hour": 14},
+    {"label": "17–23 Dec", "departure_date": "2026-12-17", "return_date": "2026-12-23", "outbound_earliest_hour": 17, "return_earliest_hour": 12}
+  ],
+  "destinations": [
+    {"code":"OPO","name":"Porto"},{"code":"FAO","name":"Faro"},{"code":"FNC","name":"Madeira"},{"code":"PDL","name":"São Miguel"},
+    {"code":"MAD","name":"Madrid"},{"code":"BCN","name":"Barcelona"},{"code":"VLC","name":"Valencia"},{"code":"AGP","name":"Málaga"},{"code":"SVQ","name":"Seville"},{"code":"BIO","name":"Bilbao"},{"code":"SCQ","name":"Santiago de Compostela"},{"code":"ALC","name":"Alicante"},{"code":"PMI","name":"Mallorca"},{"code":"IBZ","name":"Ibiza"},{"code":"LPA","name":"Gran Canaria"},{"code":"TFS","name":"Tenerife"},
+    {"code":"NCE","name":"Nice"},{"code":"CDG","name":"Paris CDG"},{"code":"ORY","name":"Paris Orly"},{"code":"LYS","name":"Lyon"},{"code":"MRS","name":"Marseille"},{"code":"TLS","name":"Toulouse"},{"code":"BOD","name":"Bordeaux"},{"code":"NTE","name":"Nantes"},
+    {"code":"FCO","name":"Rome"},{"code":"MXP","name":"Milan Malpensa"},{"code":"BGY","name":"Bergamo"},{"code":"VCE","name":"Venice"},{"code":"BLQ","name":"Bologna"},{"code":"NAP","name":"Naples"},{"code":"PSA","name":"Pisa / Cinque Terre"},{"code":"GOA","name":"Genoa / Cinque Terre"},{"code":"CTA","name":"Catania"},{"code":"PMO","name":"Palermo"},{"code":"BRI","name":"Bari"},
+    {"code":"LHR","name":"London Heathrow"},{"code":"LGW","name":"London Gatwick"},{"code":"STN","name":"London Stansted"},{"code":"LTN","name":"London Luton"},{"code":"MAN","name":"Manchester"},{"code":"EDI","name":"Edinburgh"},{"code":"GLA","name":"Glasgow"},{"code":"DUB","name":"Dublin"},{"code":"ORK","name":"Cork"},{"code":"SNN","name":"Shannon / Cliffs of Moher"},
+    {"code":"BRU","name":"Brussels"},{"code":"CRL","name":"Charleroi"},{"code":"AMS","name":"Amsterdam"},{"code":"EIN","name":"Eindhoven"},{"code":"LUX","name":"Luxembourg"},
+    {"code":"BER","name":"Berlin"},{"code":"HAM","name":"Hamburg"},{"code":"MUC","name":"Munich"},{"code":"FRA","name":"Frankfurt"},{"code":"CGN","name":"Cologne"},{"code":"VIE","name":"Vienna"},{"code":"SZG","name":"Salzburg"},{"code":"ZRH","name":"Zurich"},{"code":"GVA","name":"Geneva"},{"code":"BSL","name":"Basel"},
+    {"code":"PRG","name":"Prague"},{"code":"BUD","name":"Budapest"},{"code":"WAW","name":"Warsaw"},{"code":"KRK","name":"Kraków"},{"code":"GDN","name":"Gdańsk"},{"code":"WRO","name":"Wrocław"},{"code":"SOF","name":"Sofia"},{"code":"OTP","name":"Bucharest"},{"code":"BEG","name":"Belgrade"},{"code":"ZAG","name":"Zagreb"},{"code":"LJU","name":"Ljubljana"},{"code":"SPU","name":"Split"},{"code":"DBV","name":"Dubrovnik"},{"code":"SJJ","name":"Sarajevo"},
+    {"code":"CPH","name":"Copenhagen"},{"code":"BLL","name":"Billund"},{"code":"ARN","name":"Stockholm"},{"code":"OSL","name":"Oslo"},{"code":"BGO","name":"Bergen"},{"code":"TOS","name":"Tromsø"},{"code":"HEL","name":"Helsinki"},{"code":"RVN","name":"Rovaniemi"},{"code":"TLL","name":"Tallinn"},{"code":"RIX","name":"Riga"},{"code":"VNO","name":"Vilnius"},{"code":"KEF","name":"Reykjavík"},
+    {"code":"ATH","name":"Athens"},{"code":"SKG","name":"Thessaloniki"},{"code":"CHQ","name":"Chania"},{"code":"HER","name":"Heraklion"},{"code":"IST","name":"Istanbul"},{"code":"SAW","name":"Istanbul Sabiha"},{"code":"ADB","name":"İzmir"},{"code":"AYT","name":"Antalya"},{"code":"MLA","name":"Malta"},{"code":"LCA","name":"Larnaca"},
+    {"code":"RAK","name":"Marrakech"},{"code":"CMN","name":"Casablanca"},{"code":"FEZ","name":"Fez"},{"code":"TNG","name":"Tangier"},{"code":"AGA","name":"Agadir"},{"code":"TUN","name":"Tunis"},{"code":"ALG","name":"Algiers"},{"code":"CAI","name":"Cairo"}
+  ]
+}

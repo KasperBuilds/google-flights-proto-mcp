@@ -1,0 +1,11 @@
+.venv/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+dist/
+build/
+credentials/
+*.service-account.json
+outputs/*.log
+outputs/.refresh.lock

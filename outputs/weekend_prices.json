@@ -1,0 +1,1278 @@
+{
+  "generated_at": "2026-09-09T08:58:31+01:00",
+  "method": "One protobuf Google Flights /search URL and one fast HTTP request per airport/weekend. Prices are Google search-page quotes, not checkout verification.",
+  "origin": "LIS",
+  "destination_universe_size": 104,
+  "top_n": 5,
+  "request_count": 1352,
+  "filters": {
+    "adults": 1,
+    "max_stops": 1,
+    "max_price": null,
+    "airlines": []
+  },
+  "weekends": [
+    {
+      "label": "19\u201321 Sep",
+      "departure_date": "2026-09-19",
+      "return_date": "2026-09-21",
+      "outbound_earliest_hour": 6,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "OPO",
+            "name": "Porto"
+          },
+          "google_total": 99.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TP1922 LIS-OPO 08:05-09:00",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 55,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMTkoAUAGagUSA0xJU3IFEgNPUE8aHhIKMjAyNi0wOS0yMSgBQBBqBRIDT1BPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:51:44+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "AGP",
+            "name": "M\u00e1laga"
+          },
+          "google_total": 104.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR6627 LIS-AGP 20:30-22:45",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMTkoAUAGagUSA0xJU3IFEgNBR1AaHhIKMjAyNi0wOS0yMSgBQBBqBRIDQUdQcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:51:45+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 114.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27651 LIS-MAD 07:00-09:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMTkoAUAGagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0wOS0yMSgBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:51:45+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "VLC",
+            "name": "Valencia"
+          },
+          "google_total": 115.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR7577 LIS-VLC 20:15-22:50",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 95,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMTkoAUAGagUSA0xJU3IFEgNWTEMaHhIKMjAyNi0wOS0yMSgBQBBqBRIDVkxDcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:51:45+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NTE",
+            "name": "Nantes"
+          },
+          "google_total": 119.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27609 LIS-NTE 10:55-13:50",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMTkoAUAGagUSA0xJU3IFEgNOVEUaHhIKMjAyNi0wOS0yMSgBQBBqBRIDTlRFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:51:49+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 100,
+      "no_result_destinations": 4,
+      "errors": []
+    },
+    {
+      "label": "25\u201328 Sep",
+      "departure_date": "2026-09-25",
+      "return_date": "2026-09-28",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NTE",
+            "name": "Nantes"
+          },
+          "google_total": 106.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U24764 LIS-NTE 19:30-22:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 105,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMjUoAUAQagUSA0xJU3IFEgNOVEUaHhIKMjAyNi0wOS0yOCgBQBBqBRIDTlRFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:17+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 131.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27689 LIS-MAD 18:50-21:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 80,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMjUoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0wOS0yOCgBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:12+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "LYS",
+            "name": "Lyon"
+          },
+          "google_total": 138.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U24426 LIS-LYS 19:50-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 140,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMjUoAUAQagUSA0xJU3IFEgNMWVMaHhIKMjAyNi0wOS0yOCgBQBBqBRIDTFlTcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:17+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "GVA",
+            "name": "Geneva"
+          },
+          "google_total": 138.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1156 LIS-MAD 16:05-18:20 / UX1663 MAD-GVA 07:50-09:45",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 1000,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMjUoAUAQagUSA0xJU3IFEgNHVkEaHhIKMjAyNi0wOS0yOCgBQBBqBRIDR1ZBcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:26+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "OPO",
+            "name": "Porto"
+          },
+          "google_total": 142.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TP1934 LIS-OPO 19:30-20:25",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 55,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMDktMjUoAUAQagUSA0xJU3IFEgNPUE8aHhIKMjAyNi0wOS0yOCgBQBBqBRIDT1BPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:11+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 97,
+      "no_result_destinations": 7,
+      "errors": []
+    },
+    {
+      "label": "2\u20135 Oct",
+      "departure_date": "2026-10-02",
+      "return_date": "2026-10-05",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "OPO",
+            "name": "Porto"
+          },
+          "google_total": 99.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TP1934 LIS-OPO 19:30-20:25",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 55,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDIoAUAQagUSA0xJU3IFEgNPUE8aHhIKMjAyNi0xMC0wNSgBQBBqBRIDT1BPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:38+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "LUX",
+            "name": "Luxembourg"
+          },
+          "google_total": 175.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "LX2087 LIS-ZRH 18:20-22:15 / LX750 ZRH-LUX 08:30-09:30",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 850,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDIoAUAQagUSA0xJU3IFEgNMVVgaHhIKMjAyNi0xMC0wNSgBQBBqBRIDTFVYcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:50+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NCE",
+            "name": "Nice"
+          },
+          "google_total": 184.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "LX2087 LIS-ZRH 18:20-22:15 / LX562 ZRH-NCE 07:05-08:15",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 775,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDIoAUAQagUSA0xJU3IFEgNOQ0UaHhIKMjAyNi0xMC0wNSgBQBBqBRIDTkNFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:42+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NTE",
+            "name": "Nantes"
+          },
+          "google_total": 193.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U24764 LIS-NTE 19:30-22:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 105,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDIoAUAQagUSA0xJU3IFEgNOVEUaHhIKMjAyNi0xMC0wNSgBQBBqBRIDTlRFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:44+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "LYS",
+            "name": "Lyon"
+          },
+          "google_total": 218.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27599 LIS-LYS 17:25-20:45",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 140,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDIoAUAQagUSA0xJU3IFEgNMWVMaHhIKMjAyNi0xMC0wNSgBQBBqBRIDTFlTcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:52:43+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 97,
+      "no_result_destinations": 7,
+      "errors": []
+    },
+    {
+      "label": "9\u201312 Oct",
+      "departure_date": "2026-10-09",
+      "return_date": "2026-10-12",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 85.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27689 LIS-MAD 18:50-21:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 80,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDkoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMC0xMigBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:06+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NTE",
+            "name": "Nantes"
+          },
+          "google_total": 92.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U24764 LIS-NTE 19:30-22:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 105,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDkoAUAQagUSA0xJU3IFEgNOVEUaHhIKMjAyNi0xMC0xMigBQBBqBRIDTlRFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:11+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "OPO",
+            "name": "Porto"
+          },
+          "google_total": 99.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TP1932 LIS-OPO 18:00-18:55",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 55,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDkoAUAQagUSA0xJU3IFEgNPUE8aHhIKMjAyNi0xMC0xMigBQBBqBRIDT1BPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:06+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BIO",
+            "name": "Bilbao"
+          },
+          "google_total": 99.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "VY2701 LIS-BIO 16:20-18:55",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 95,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDkoAUAQagUSA0xJU3IFEgNCSU8aHhIKMjAyNi0xMC0xMigBQBBqBRIDQklPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:08+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "AGP",
+            "name": "M\u00e1laga"
+          },
+          "google_total": 100.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3682 LIS-AGP 22:30-00:45",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMDkoAUAQagUSA0xJU3IFEgNBR1AaHhIKMjAyNi0xMC0xMigBQBBqBRIDQUdQcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:07+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 97,
+      "no_result_destinations": 7,
+      "errors": []
+    },
+    {
+      "label": "16\u201319 Oct",
+      "departure_date": "2026-10-16",
+      "return_date": "2026-10-19",
+      "outbound_earliest_hour": 20,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "AGP",
+            "name": "M\u00e1laga"
+          },
+          "google_total": 54.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3682 LIS-AGP 22:30-00:45",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMTYoAUAUagUSA0xJU3IFEgNBR1AaHhIKMjAyNi0xMC0xOSgBQBBqBRIDQUdQcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:33+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 71.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1160 LIS-MAD 20:05-22:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMTYoAUAUagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMC0xOSgBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:32+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "VLC",
+            "name": "Valencia"
+          },
+          "google_total": 126.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1160 LIS-MAD 20:05-22:20 / UX4063 MAD-VLC 07:10-08:10",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 665,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMTYoAUAUagUSA0xJU3IFEgNWTEMaHhIKMjAyNi0xMC0xOSgBQBBqBRIDVkxDcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:33+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "ALC",
+            "name": "Alicante"
+          },
+          "google_total": 127.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1160 LIS-MAD 20:05-22:20 / UX4047 MAD-ALC 07:00-08:10",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 665,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMTYoAUAUagUSA0xJU3IFEgNBTEMaHhIKMjAyNi0xMC0xOSgBQBBqBRIDQUxDcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:34+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BIO",
+            "name": "Bilbao"
+          },
+          "google_total": 134.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1160 LIS-MAD 20:05-22:20 / UX7153 MAD-BIO 14:55-15:55",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 1130,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMTYoAUAUagUSA0xJU3IFEgNCSU8aHhIKMjAyNi0xMC0xOSgBQBBqBRIDQklPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:33+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 73,
+      "no_result_destinations": 31,
+      "errors": []
+    },
+    {
+      "label": "23\u201325 Oct",
+      "departure_date": "2026-10-23",
+      "return_date": "2026-10-25",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 14,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 91.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1156 LIS-MAD 16:05-18:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMjMoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMC0yNSgBQA5qBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:52+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 96.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "VY8463 LIS-BCN 21:15-00:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMjMoAUAQagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMC0yNSgBQA5qBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:52+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "STN",
+            "name": "London Stansted"
+          },
+          "google_total": 98.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR1885 LIS-STN 21:40-00:25",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 165,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMjMoAUAQagUSA0xJU3IFEgNTVE4aHhIKMjAyNi0xMC0yNSgBQA5qBRIDU1ROcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:00+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "FNC",
+            "name": "Madeira"
+          },
+          "google_total": 107.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR88 LIS-FNC 17:30-19:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 110,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMjMoAUAQagUSA0xJU3IFEgNGTkMaHhIKMjAyNi0xMC0yNSgBQA5qBRIDRk5DcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:53:51+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "DUB",
+            "name": "Dublin"
+          },
+          "google_total": 109.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR7137 LIS-DUB 22:30-01:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 165,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMjMoAUAQagUSA0xJU3IFEgNEVUIaHhIKMjAyNi0xMC0yNSgBQA5qBRIDRFVCcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:01+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 101,
+      "no_result_destinations": 3,
+      "errors": []
+    },
+    {
+      "label": "30 Oct\u20132 Nov",
+      "departure_date": "2026-10-30",
+      "return_date": "2026-11-02",
+      "outbound_earliest_hour": 20,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "SVQ",
+            "name": "Seville"
+          },
+          "google_total": 45.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3628 LIS-SVQ 21:05-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 65,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMzAoAUAUagUSA0xJU3IFEgNTVlEaHhIKMjAyNi0xMS0wMigBQBBqBRIDU1ZRcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:16+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 53.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR9441 LIS-MAD 20:15-22:40",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 85,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMzAoAUAUagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMS0wMigBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:15+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "FNC",
+            "name": "Madeira"
+          },
+          "google_total": 72.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR387 LIS-FNC 22:25-00:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 110,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMzAoAUAUagUSA0xJU3IFEgNGTkMaHhIKMjAyNi0xMS0wMigBQBBqBRIDRk5DcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:14+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BGY",
+            "name": "Bergamo"
+          },
+          "google_total": 89.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR2086 LIS-BGY 21:00-00:50",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 170,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMzAoAUAUagUSA0xJU3IFEgNCR1kaHhIKMjAyNi0xMS0wMigBQBBqBRIDQkdZcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:18+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 91.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "VY1155 LIS-BCN 21:05-23:59",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 114,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTAtMzAoAUAUagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMS0wMigBQBBqBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:15+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 63,
+      "no_result_destinations": 41,
+      "errors": []
+    },
+    {
+      "label": "6\u20139 Nov",
+      "departure_date": "2026-11-06",
+      "return_date": "2026-11-09",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "SVQ",
+            "name": "Seville"
+          },
+          "google_total": 52.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3628 LIS-SVQ 21:05-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 65,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMDYoAUAQagUSA0xJU3IFEgNTVlEaHhIKMjAyNi0xMS0wOSgBQBBqBRIDU1ZRcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:33+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "FNC",
+            "name": "Madeira"
+          },
+          "google_total": 53.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR387 LIS-FNC 22:25-00:15",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 110,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMDYoAUAQagUSA0xJU3IFEgNGTkMaHhIKMjAyNi0xMS0wOSgBQBBqBRIDRk5DcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:31+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 57.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27681 LIS-BCN 18:25-21:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMDYoAUAQagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMS0wOSgBQBBqBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:32+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 59.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27651 LIS-MAD 19:10-21:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 85,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMDYoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMS0wOSgBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:32+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "LTN",
+            "name": "London Luton"
+          },
+          "google_total": 65.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U22462 LIS-LTN 18:50-21:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 165,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMDYoAUAQagUSA0xJU3IFEgNMVE4aHhIKMjAyNi0xMS0wOSgBQBBqBRIDTFROcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:37+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 94,
+      "no_result_destinations": 10,
+      "errors": []
+    },
+    {
+      "label": "20\u201323 Nov",
+      "departure_date": "2026-11-20",
+      "return_date": "2026-11-23",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 49.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR9441 LIS-MAD 20:15-22:40",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 85,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjAoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMS0yMygBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:46+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "FNC",
+            "name": "Madeira"
+          },
+          "google_total": 58.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27621 LIS-FNC 17:45-19:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 110,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjAoAUAQagUSA0xJU3IFEgNGTkMaHhIKMjAyNi0xMS0yMygBQBBqBRIDRk5DcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:57:48+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "SVQ",
+            "name": "Seville"
+          },
+          "google_total": 59.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3628 LIS-SVQ 21:05-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 65,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjAoAUAQagUSA0xJU3IFEgNTVlEaHhIKMjAyNi0xMS0yMygBQBBqBRIDU1ZRcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:47+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "GVA",
+            "name": "Geneva"
+          },
+          "google_total": 64.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U21466 LIS-GVA 18:50-22:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 150,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjAoAUAQagUSA0xJU3IFEgNHVkEaHhIKMjAyNi0xMS0yMygBQBBqBRIDR1ZBcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:56:46+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MXP",
+            "name": "Milan Malpensa"
+          },
+          "google_total": 69.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27697 LIS-MXP 16:35-20:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 165,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjAoAUAQagUSA0xJU3IFEgNNWFAaHhIKMjAyNi0xMS0yMygBQBBqBRIDTVhQcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:49+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 92,
+      "no_result_destinations": 12,
+      "errors": []
+    },
+    {
+      "label": "27\u201330 Nov",
+      "departure_date": "2026-11-27",
+      "return_date": "2026-11-30",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 64.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27651 LIS-MAD 19:10-21:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 85,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjcoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMS0zMCgBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:59+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "FNC",
+            "name": "Madeira"
+          },
+          "google_total": 64.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27621 LIS-FNC 17:45-19:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 110,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjcoAUAQagUSA0xJU3IFEgNGTkMaHhIKMjAyNi0xMS0zMCgBQBBqBRIDRk5DcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:59+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 72.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27681 LIS-BCN 18:25-21:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjcoAUAQagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMS0zMCgBQBBqBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:59+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "OPO",
+            "name": "Porto"
+          },
+          "google_total": 74.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TP1932 LIS-OPO 17:00-18:00",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 60,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjcoAUAQagUSA0xJU3IFEgNPUE8aHhIKMjAyNi0xMS0zMCgBQBBqBRIDT1BPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:54:59+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NCE",
+            "name": "Nice"
+          },
+          "google_total": 74.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27617 LIS-NCE 17:00-20:30",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 150,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjcoAUAQagUSA0xJU3IFEgNOQ0UaHhIKMjAyNi0xMS0zMCgBQBBqBRIDTkNFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:01+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 92,
+      "no_result_destinations": 12,
+      "errors": []
+    },
+    {
+      "label": "4\u20137 Dec",
+      "departure_date": "2026-12-04",
+      "return_date": "2026-12-07",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 60.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "IB538 LIS-MAD 20:45-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 85,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMDQoAUAQagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMi0wNygBQBBqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:12+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 62.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27681 LIS-BCN 18:25-21:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMDQoAUAQagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMi0wNygBQBBqBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:12+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "NCE",
+            "name": "Nice"
+          },
+          "google_total": 73.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27617 LIS-NCE 17:00-20:30",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 150,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMDQoAUAQagUSA0xJU3IFEgNOQ0UaHhIKMjAyNi0xMi0wNygBQBBqBRIDTkNFcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:57:12+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "SVQ",
+            "name": "Seville"
+          },
+          "google_total": 77.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3628 LIS-SVQ 21:05-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 65,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMDQoAUAQagUSA0xJU3IFEgNTVlEaHhIKMjAyNi0xMi0wNygBQBBqBRIDU1ZRcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:58:11+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "LGW",
+            "name": "London Gatwick"
+          },
+          "google_total": 90.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U28512 LIS-LGW 16:45-19:30",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 165,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMDQoAUAQagUSA0xJU3IFEgNMR1caHhIKMjAyNi0xMi0wNygBQBBqBRIDTEdXcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:16+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 94,
+      "no_result_destinations": 10,
+      "errors": []
+    },
+    {
+      "label": "11\u201314 Dec",
+      "departure_date": "2026-12-11",
+      "return_date": "2026-12-14",
+      "outbound_earliest_hour": 11,
+      "return_earliest_hour": 14,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "SVQ",
+            "name": "Seville"
+          },
+          "google_total": 45.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "FR3628 LIS-SVQ 21:05-23:10",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 65,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTEoAUALagUSA0xJU3IFEgNTVlEaHhIKMjAyNi0xMi0xNCgBQA5qBRIDU1ZRcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:29+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 51.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "UX1156 LIS-MAD 16:05-18:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 75,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTEoAUALagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMi0xNCgBQA5qBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:29+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 57.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27681 LIS-BCN 18:25-21:20",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTEoAUALagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMi0xNCgBQA5qBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:29+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BIO",
+            "name": "Bilbao"
+          },
+          "google_total": 58.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "VY6503 LIS-BIO 13:50-16:30",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 100,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTEoAUALagUSA0xJU3IFEgNCSU8aHhIKMjAyNi0xMi0xNCgBQA5qBRIDQklPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:29+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "FNC",
+            "name": "Madeira"
+          },
+          "google_total": 58.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27621 LIS-FNC 17:45-19:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 110,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTEoAUALagUSA0xJU3IFEgNGTkMaHhIKMjAyNi0xMi0xNCgBQA5qBRIDRk5DcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:28+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 98,
+      "no_result_destinations": 6,
+      "errors": []
+    },
+    {
+      "label": "17\u201323 Dec",
+      "departure_date": "2026-12-17",
+      "return_date": "2026-12-23",
+      "outbound_earliest_hour": 17,
+      "return_earliest_hour": 12,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "MAD",
+            "name": "Madrid"
+          },
+          "google_total": 50.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27651 LIS-MAD 19:10-21:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 85,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTcoAUARagUSA0xJU3IFEgNNQUQaHhIKMjAyNi0xMi0yMygBQAxqBRIDTUFEcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:58:01+01:00",
+          "rank": 1
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "OPO",
+            "name": "Porto"
+          },
+          "google_total": 74.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TP1934 LIS-OPO 18:00-19:00",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 60,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTcoAUARagUSA0xJU3IFEgNPUE8aHhIKMjAyNi0xMi0yMygBQAxqBRIDT1BPcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:58:01+01:00",
+          "rank": 2
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "RAK",
+            "name": "Marrakech"
+          },
+          "google_total": 82.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27675 LIS-RAK 17:00-18:35",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 95,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTcoAUARagUSA0xJU3IFEgNSQUsaHhIKMjAyNi0xMi0yMygBQAxqBRIDUkFLcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:57+01:00",
+          "rank": 3
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BCN",
+            "name": "Barcelona"
+          },
+          "google_total": 85.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "VY1153 LIS-BCN 19:00-21:55",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTcoAUARagUSA0xJU3IFEgNCQ04aHhIKMjAyNi0xMi0yMygBQAxqBRIDQkNOcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:45+01:00",
+          "rank": 4
+        },
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "BOD",
+            "name": "Bordeaux"
+          },
+          "google_total": 99.0,
+          "currency": "EUR",
+          "passengers": 1,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "U27605 LIS-BOD 19:00-21:55",
+          "outbound_stops": 0,
+          "outbound_duration_minutes": 115,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTItMTcoAUARagUSA0xJU3IFEgNCT0QaHhIKMjAyNi0xMi0yMygBQAxqBRIDQk9EcgUSA0xJU0IBAUgBiAEBmAEB&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-09T08:55:47+01:00",
+          "rank": 5
+        }
+      ],
+      "quoted_destinations": 92,
+      "no_result_destinations": 12,
+      "errors": []
+    }
+  ],
+  "retry_request_count": 281
+}

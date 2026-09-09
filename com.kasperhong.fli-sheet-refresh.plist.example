@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kasperhong.fli-sheet-refresh</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/kasperhong/.local/bin/uv</string>
+    <string>run</string>
+    <string>python</string>
+    <string>scripts/refresh_google_sheet.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/kasperhong/Downloads/fli/google-flights-proto-mcp</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>GOOGLE_APPLICATION_CREDENTIALS</key>
+    <string>/Users/kasperhong/.config/fli/google-sheets-service-account.json</string>
+    <key>FLI_SPREADSHEET_ID</key>
+    <string>1lhZKd4rArPltnn5wynoIbZH9uw3HvoMcv3w1TMZosLU</string>
+  </dict>
+
+  <key>StartInterval</key>
+  <integer>3600</integer>
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/kasperhong/Downloads/fli/google-flights-proto-mcp/outputs/hourly-refresh.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/kasperhong/Downloads/fli/google-flights-proto-mcp/outputs/hourly-refresh.log</string>
+</dict>
+</plist>

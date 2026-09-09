@@ -1,0 +1,60 @@
+{
+  "max_return_price": 250,
+  "options_per_weekend": 3,
+  "deal_thresholds": {
+    "exceptional_max_ratio": 0.65,
+    "unusually_cheap_max_ratio": 0.80,
+    "good_max_ratio": 0.92,
+    "normal_max_ratio": 1.08
+  },
+  "bucket_list": [
+    {"name": "Madeira", "type": "region", "airports": ["FNC"]},
+    {"name": "Nice / French Riviera", "type": "city / region", "airports": ["NCE"]},
+    {"name": "Ireland", "type": "country", "airports": ["DUB", "ORK", "SNN"]},
+    {"name": "Morocco", "type": "country", "airports": ["RAK", "CMN", "FEZ", "TNG", "AGA"]},
+    {"name": "Iceland", "type": "country", "airports": ["KEF"]},
+    {"name": "Finland / Lapland", "type": "country / region", "airports": ["HEL", "RVN"]},
+    {"name": "Norway", "type": "country", "airports": ["OSL", "BGO", "TOS"]},
+    {"name": "Cinque Terre", "type": "region", "airports": ["PSA", "GOA"]},
+    {"name": "Italy", "type": "country", "airports": ["FCO", "MXP", "BGY", "VCE", "BLQ", "NAP", "PSA", "GOA", "CTA", "PMO", "BRI"]},
+    {"name": "Scotland", "type": "country", "airports": ["EDI", "GLA"]},
+    {"name": "Berlin", "type": "city", "airports": ["BER"]},
+    {"name": "Croatia", "type": "country", "airports": ["ZAG", "SPU", "DBV"]},
+    {"name": "Prague", "type": "city", "airports": ["PRG"]},
+    {"name": "Copenhagen", "type": "city", "airports": ["CPH"]},
+    {"name": "Billund", "type": "city", "airports": ["BLL"]},
+    {"name": "London", "type": "city", "airports": ["LHR", "LGW", "STN", "LTN"]}
+  ],
+  "categories": [
+    {"name": "Madeira", "airports": ["FNC"], "preferred_weekends": ["19–21 Sep", "25–28 Sep"]},
+    {"name": "Nice / Riviera", "airports": ["NCE"]},
+    {"name": "Ireland", "airports": ["DUB", "SNN"], "preferred_weekends": ["23–25 Oct", "30 Oct–2 Nov"]},
+    {"name": "Morocco", "airports": ["RAK", "CMN", "FEZ", "AGA"], "preferred_weekends": ["6–9 Nov", "20–23 Nov", "27–30 Nov"]},
+    {"name": "Northern Lights", "airports": ["TOS", "KEF", "RVN"], "preferred_weekends": ["27–30 Nov", "4–7 Dec", "11–14 Dec", "17–23 Dec"]},
+    {"name": "Cinque Terre", "airports": ["PSA", "GOA"], "preferred_weekends": ["19–21 Sep", "25–28 Sep", "2–5 Oct", "9–12 Oct", "16–19 Oct", "23–25 Oct", "30 Oct–2 Nov"]},
+    {"name": "Italy", "airports": ["PSA", "GOA", "MXP", "FCO", "NAP", "BLQ", "VCE"]},
+    {"name": "Scotland", "airports": ["EDI", "GLA"]},
+    {"name": "Berlin", "airports": ["BER"]},
+    {"name": "Croatia", "airports": ["ZAG", "SPU", "DBV"], "preferred_weekends": ["19–21 Sep", "25–28 Sep", "2–5 Oct", "9–12 Oct", "16–19 Oct", "23–25 Oct", "30 Oct–2 Nov"]},
+    {"name": "Prague", "airports": ["PRG"]},
+    {"name": "Copenhagen", "airports": ["CPH"]},
+    {"name": "Billund", "airports": ["BLL"]},
+    {"name": "London", "airports": ["LHR", "LGW", "STN", "LTN"]},
+    {"name": "Norway", "airports": ["OSL", "BGO", "TOS"]}
+  ],
+  "coverage_plan": [
+    {"weekend": "19–21 Sep", "airport": "FNC", "reason": "September Madeira priority"},
+    {"weekend": "25–28 Sep", "airport": "SPU", "reason": "Croatia while the coast is still in season"},
+    {"weekend": "2–5 Oct", "airport": "BLL", "reason": "Billund coverage; closest-to-normal available slot"},
+    {"weekend": "9–12 Oct", "airport": "PSA", "reason": "Cinque Terre and Italy in the better hiking season"},
+    {"weekend": "16–19 Oct", "airport": "LGW", "reason": "London after the Friday exam"},
+    {"weekend": "23–25 Oct", "airport": "DUB", "reason": "Ireland priority window and direct fare"},
+    {"weekend": "30 Oct–2 Nov", "airport": "PRG", "reason": "Prague below its semester-window median"},
+    {"weekend": "6–9 Nov", "airport": "RAK", "reason": "Morocco priority month"},
+    {"weekend": "20–23 Nov", "airport": "BER", "reason": "Berlin well below its semester-window median"},
+    {"weekend": "27–30 Nov", "airport": "CPH", "reason": "Copenhagen Christmas-season atmosphere"},
+    {"weekend": "4–7 Dec", "airport": "NCE", "reason": "Exceptional Riviera fare"},
+    {"weekend": "11–14 Dec", "airport": "TOS", "reason": "Northern Lights plus Norway in the right season"},
+    {"weekend": "17–23 Dec", "airport": "GLA", "reason": "Scotland and Highlands access on the long trip"}
+  ]
+}

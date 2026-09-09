@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-09-08T23:03:28+01:00",
+  "method": "One protobuf Google Flights /search URL and one fast HTTP request per airport/weekend. Prices are Google search-page quotes, not checkout verification.",
+  "origin": "LIS",
+  "destination_universe_size": 1,
+  "request_count": 1,
+  "filters": {
+    "adults": 2,
+    "max_stops": 1,
+    "max_price": null,
+    "airlines": []
+  },
+  "weekends": [
+    {
+      "label": "20\u201323 Nov",
+      "departure_date": "2026-11-20",
+      "return_date": "2026-11-23",
+      "outbound_earliest_hour": 16,
+      "return_earliest_hour": 16,
+      "cheapest": [
+        {
+          "status": "google_quote",
+          "destination": {
+            "code": "AYT",
+            "name": "Antalya"
+          },
+          "google_total": 993.0,
+          "currency": "EUR",
+          "passengers": 2,
+          "price_scope": "Google Flights search-page round-trip total for all passengers; not provider-checkout-verified",
+          "outbound_example": "TK1760 LIS-IST 16:10-23:55 / TK2444 IST-AYT 02:05-03:35",
+          "outbound_stops": 1,
+          "outbound_duration_minutes": 505,
+          "google_search_url": "https://www.google.com/travel/flights/search?tfs=Gh4SCjIwMjYtMTEtMjAoAUAQagUSA0xJU3IFEgNBWVQaHhIKMjAyNi0xMS0yMygBQBBqBRIDQVlUcgUSA0xJU0ICAQFIAYgBAZgBAQ&hl=en&gl=PT&curr=EUR",
+          "checked_at": "2026-09-08T23:03:27+01:00",
+          "rank": 1
+        }
+      ],
+      "quoted_destinations": 1,
+      "no_result_destinations": 0,
+      "errors": []
+    }
+  ]
+}

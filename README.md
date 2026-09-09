@@ -1,0 +1,230 @@
+# Google Flights Protobuf MCP
+
+A standalone MCP server for this deliberately bounded pipeline:
+
+```text
+protobuf tfs query
+  -> browser-impersonating HTTP discovery
+  -> outbound/return pairing
+  -> deterministic ranking
+  -> top 1-3 exact /booking?tfs= links
+  -> Playwright price + itinerary verification
+```
+
+It does **not** import or launch `fli-mcp`. The only browser work happens after
+HTTP discovery has reduced the result set to at most three exact itineraries.
+
+## Install and run
+
+```bash
+cd google-flights-proto-mcp
+uv sync --all-extras
+uv run google-flights-proto-mcp
+```
+
+For streamable HTTP MCP:
+
+```bash
+uv run google-flights-proto-mcp-http
+```
+
+The default endpoint is `http://127.0.0.1:8010/mcp/`. HTTP clients must send:
+
+```text
+Accept: application/json, text/event-stream
+```
+
+Set `HOST` and `PORT` to change the bind address. Browser discovery prefers an
+installed Chrome/Chromium automatically. Override it with:
+
+```bash
+export GOOGLE_FLIGHTS_MCP_BROWSER_EXECUTABLE=/path/to/chrome
+```
+
+If Google rotates its EU consent cookie, set
+`GOOGLE_FLIGHTS_MCP_SOCS_COOKIE`. The default is a consent-choice cookie, not
+an account/session credential.
+
+## MCP tools
+
+- `build_protobuf_search_url`: builds a search URL without network access.
+- `discover_and_rank_complete`: fast HTTP discovery, full round-trip pairing,
+  ranking, and top 1-3 exact booking links. Its prices are explicitly marked as
+  discovery prices.
+- `search_and_verify_top`: the full pipeline. A price is verified only at
+  `shortlist[].verification.verified_price` when `verified` is true.
+
+The `discovered_price` is Google Flights' HTTP shopping price for a fully
+paired itinerary. It must never be relabelled as browser-verified. Exact
+booking URLs pin dates, airports, passengers, cabin, airlines, and flight
+numbers in protobuf; they do not freeze inventory or price.
+
+## Ranking
+
+Ranking operates only on completed itinerary pairs:
+
+- 50% total price
+- 25% useful time at the destination
+- 15% total flight time
+- 10% stops
+
+The initial outbound list is trimmed by price/stops/duration only to bound HTTP
+fan-out. That preliminary trim is not presented as the final ranking.
+
+## Verification contract
+
+Playwright opens the exact `/travel/flights/booking?tfs=...` page and requires:
+
+- the rendered `Lowest total price` amount;
+- the encoded passenger count and cabin;
+- all encoded flight legs and dates;
+- Google's required-taxes-and-fees notice;
+- a same-priced booking option and a successful provider handoff that repeats
+  the same total.
+
+On any mismatch or anti-automation challenge, `verified_price` remains null.
+Even a provider-confirmed price can change before purchase, and optional
+baggage or payment charges may still apply.
+
+## Fast weekend price scanner (no MCP, no Playwright)
+
+For broad destination discovery, use the search-page scanner directly:
+
+```bash
+uv run python scripts/search_weekend_prices.py --top 5 --workers 4
+```
+
+The scanner defaults to one adult. Override it explicitly with `--adults N`
+when a different passenger count is needed.
+
+It reads `config/semester_2026.json`, generates one
+`/travel/flights/search?tfs=<protobuf>` URL per airport/weekend, fetches the
+embedded Google search results, rejects alternate-airport substitutions, and
+writes ranked JSON and CSV files under `outputs/`.
+
+Useful overrides:
+
+```bash
+uv run python scripts/search_weekend_prices.py \
+  --weekend '25–28 Sep' \
+  --destinations BCN,FNC,NCE,MAD \
+  --max-stops 1 \
+  --max-price 500 \
+  --airlines U2,VY,FR
+```
+
+These are live Google **search-page quotes**, not checkout-verified prices.
+The scanner records anti-automation failures separately and never converts a
+blocked query into a false “no flights” result.
+
+## Bucket-list deal ranking
+
+After scanning the bucket-list airport universe, compare every destination
+with its own median quote across the semester windows and build the
+coverage-first plan:
+
+```bash
+uv run python scripts/rank_bucket_deals.py
+```
+
+The output calls this baseline `semester_window_median`. It is an auditable
+comparison within this scan, not Google's historical “typical price” signal.
+
+## Hourly Google Sheet refresh on macOS
+
+`scripts/refresh_google_sheet.py` runs the bucket-airport scan for one adult,
+retries transient failures, recalculates route medians, reranks exactly three
+options per weekend, and overwrites only the values in `3 per Weekend!A2` and
+`3 per Weekend!A5:N43`. Existing formatting and conditional-format rules are
+preserved. The last good Sheet remains untouched if the scan is incomplete.
+The default retry policy uses two workers and paced backoff because a complete
+104-destination scan across 13 windows makes 1,352 Google searches and can
+encounter HTTP 429 responses.
+
+The job uses the official Google Sheets API for workbook writes. Create a
+Google Cloud service account, enable the Google Sheets API, download its JSON
+key outside this repository, and share the workbook with the service account's
+`client_email` as an editor. Then test without changing the Sheet:
+
+```bash
+GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/service-account.json \
+  uv run python scripts/refresh_google_sheet.py --dry-run
+```
+
+Run one real refresh:
+
+```bash
+GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/service-account.json \
+  uv run python scripts/refresh_google_sheet.py
+```
+
+For an hourly macOS job, copy
+`com.kasperhong.fli-sheet-refresh.plist.example` to
+`/Users/kasperhong/Library/LaunchAgents/com.kasperhong.fli-sheet-refresh.plist`,
+change the credentials path if needed, and load it:
+
+```bash
+launchctl bootstrap gui/$(id -u) \
+  /Users/kasperhong/Library/LaunchAgents/com.kasperhong.fli-sheet-refresh.plist
+```
+
+Inspect the log at `outputs/hourly-refresh.log`. To reload after editing the
+plist, boot it out first and then bootstrap it again:
+
+```bash
+launchctl bootout gui/$(id -u) \
+  /Users/kasperhong/Library/LaunchAgents/com.kasperhong.fli-sheet-refresh.plist
+```
+
+The hourly rows remain Google search-page quotes. Provider-checkout Playwright
+verification is intentionally not run across the full route universe each
+hour; that should be limited to the current top one to three candidates.
+
+## Railway website
+
+The Railway-ready FastAPI dashboard serves the last successful snapshot
+immediately and refreshes prices in the background. It includes:
+
+- up to three realistic options per weekend, with a hard €250 return ceiling;
+- exact one-adult protobuf Google Flights links;
+- hourly scanning, median recalculation, and reranking;
+- atomic snapshot publishing so blocked scans never replace good data;
+- `/healthz`, `/api/status`, and `/api/deals` endpoints;
+- an optional token-protected `POST /api/refresh` endpoint.
+
+Run it locally without starting background Google searches:
+
+```bash
+FLI_REFRESH_ENABLED=false uv run google-flights-proto-web
+```
+
+Then open `http://127.0.0.1:8000`.
+
+For Railway, deploy this directory as the service root. Railway detects the
+included `Dockerfile`, starts the server on its injected `PORT`, and checks
+`/healthz`. Add a persistent volume mounted at `/data` so successful snapshots
+survive deployments. Use one replica; multiple replicas would each run their
+own scanner.
+
+Optional Railway variables:
+
+| Variable | Default | Purpose |
+| --- | ---: | --- |
+| `FLI_REFRESH_ENABLED` | `true` | Enable the background worker |
+| `FLI_REFRESH_ON_STARTUP` | `true` | Start a refresh after boot |
+| `FLI_REFRESH_INTERVAL_SECONDS` | `3600` | Refresh interval |
+| `FLI_REFRESH_WORKERS` | `2` | Concurrent Google requests |
+| `FLI_REFRESH_RETRY_PASSES` | `6` | Maximum retry passes |
+| `FLI_REFRESH_RETRY_DELAY_SECONDS` | `10` | Linear retry backoff |
+| `FLI_ADMIN_TOKEN` | unset | Enables authenticated manual refresh |
+
+Manual refresh, when `FLI_ADMIN_TOKEN` is configured:
+
+```bash
+curl -X POST -H "X-Refresh-Token: YOUR_TOKEN" \
+  https://YOUR-DOMAIN/api/refresh
+```
+
+The website intentionally labels prices as search-page quotes. Hosting does
+not turn them into checkout-verified fares, and Railway datacenter IPs may be
+rate-limited more often than a residential connection.
