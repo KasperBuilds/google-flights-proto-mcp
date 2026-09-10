@@ -201,6 +201,10 @@ These are live Google **search-page quotes**, not checkout-verified prices.
 The scanner records anti-automation failures separately and never converts a
 blocked query into a false “no flights” result.
 
+Travel windows can include an `availability_note` plus earliest outbound and
+return hours. Exam-day windows use a realistic airport buffer: an assessment
+ending at 19:30 does not permit a 21:00 departure.
+
 ## Bucket-list deal ranking
 
 After scanning the bucket-list airport universe, compare every destination

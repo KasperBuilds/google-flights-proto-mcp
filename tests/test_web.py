@@ -1,3 +1,4 @@
+import json
 from copy import deepcopy
 from pathlib import Path
 
@@ -24,24 +25,6 @@ def test_public_payload_respects_budget_cap() -> None:
     assert all(
         option["price"] <= 250 for weekend in payload["weekends"] for option in weekend["options"]
     )
-
-
-def test_public_payload_keeps_options_beyond_initial_three() -> None:
-    ranked = deepcopy(load_ranked_snapshot(SEED_PATH.parent))
-    first_weekend = ranked["weekends"][0]["label"]
-    existing = [item for item in ranked["weekend_options"] if item["weekend"] == first_weekend]
-    extra = deepcopy(existing[0])
-    extra["option"] = 4
-    extra["destination"] = {"code": "ZZZ", "name": "Additional option"}
-    ranked["weekend_options"].append(extra)
-    ranked["website_initial_options"] = 3
-
-    payload = build_public_payload(ranked)
-    weekend = next(item for item in payload["weekends"] if item["label"] == first_weekend)
-
-    assert len(weekend["options"]) == 4
-    assert [option["rank"] for option in weekend["options"]] == [1, 2, 3, 4]
-    assert payload["summary"]["initial_options_per_weekend"] == 3
     assert all(
         option["search_url"].startswith("https://www.google.com/travel/flights/search?tfs=")
         for weekend in payload["weekends"]
@@ -56,6 +39,40 @@ def test_public_payload_keeps_options_beyond_initial_three() -> None:
         option["on_bucket_list"] == bool(option["bucket_list_labels"])
         for weekend in payload["weekends"]
         for option in weekend["options"]
+    )
+
+
+def test_public_payload_keeps_options_beyond_initial_three() -> None:
+    ranked = deepcopy(load_ranked_snapshot(SEED_PATH.parent))
+    first_weekend = ranked["weekends"][0]["label"]
+    existing = [item for item in ranked["weekend_options"] if item["weekend"] == first_weekend]
+    extra = deepcopy(existing[0])
+    extra["option"] = 4
+    extra["destination"] = {"code": "ZZZ", "name": "Additional option"}
+    ranked["weekend_options"].append(extra)
+    ranked["website_initial_options"] = 3
+    ranked["weekends"][0]["availability_note"] = "Exam buffer applies"
+
+    payload = build_public_payload(ranked)
+    weekend = next(item for item in payload["weekends"] if item["label"] == first_weekend)
+
+    assert len(weekend["options"]) == 4
+    assert [option["rank"] for option in weekend["options"]] == [1, 2, 3, 4]
+    assert weekend["availability_note"] == "Exam buffer applies"
+    assert payload["summary"]["initial_options_per_weekend"] == 3
+
+
+def test_exam_windows_include_realistic_airport_buffers() -> None:
+    config_path = SEED_PATH.parents[1] / "config" / "semester_2026.json"
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    weekends = {weekend["label"]: weekend for weekend in config["weekends"]}
+
+    assert weekends["16–19 Oct"]["outbound_earliest_hour"] == 23
+    assert weekends["30 Oct–2 Nov"]["outbound_earliest_hour"] == 23
+    assert weekends["11–14 Dec"]["outbound_earliest_hour"] == 14
+    assert all(
+        weekends[label].get("availability_note")
+        for label in ("19–21 Sep", "16–19 Oct", "30 Oct–2 Nov", "11–14 Dec")
     )
 
 

@@ -149,8 +149,13 @@ function renderWeekends() {
     section.id = `weekend-${index + 1}`;
 
     const heading = element("div", "weekend-heading");
+    const headingCopy = element("div", "weekend-heading-copy");
+    headingCopy.append(element("h2", "", weekend.label));
+    if (weekend.availability_note) {
+      headingCopy.append(element("p", "availability-note", weekend.availability_note));
+    }
     heading.append(
-      element("h2", "", weekend.label),
+      headingCopy,
       element(
         "span",
         "option-count",

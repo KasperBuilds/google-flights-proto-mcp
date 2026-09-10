@@ -216,6 +216,7 @@ def rank(payload: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
                 "label": weekend["label"],
                 "departure_date": weekend["departure_date"],
                 "return_date": weekend["return_date"],
+                "availability_note": weekend.get("availability_note"),
             }
             for weekend in payload["weekends"]
         ],

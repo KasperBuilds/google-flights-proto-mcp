@@ -240,6 +240,9 @@ select {
   letter-spacing: -.02em;
 }
 
+.weekend-heading-copy { min-width: 0; }
+.availability-note { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+
 .option-count { color: var(--muted); font-size: 11px; }
 
 .flight-list {

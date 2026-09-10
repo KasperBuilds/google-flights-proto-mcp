@@ -83,6 +83,7 @@ def load_ranked_snapshot(data_dir: Path | None = None) -> dict[str, Any]:
 def build_public_payload(payload: dict[str, Any]) -> dict[str, Any]:
     """Shape the internal ranker output into a stable browser API."""
     order = [weekend["label"] for weekend in payload.get("weekends", [])]
+    weekend_metadata = {weekend["label"]: weekend for weekend in payload.get("weekends", [])}
     grouped: dict[str, list[dict[str, Any]]] = {weekend: [] for weekend in order}
     for item in payload["weekend_options"]:
         weekend = item["weekend"]
@@ -161,7 +162,14 @@ def build_public_payload(payload: dict[str, Any]) -> dict[str, Any]:
             ),
             "oldest_quote_at": oldest_check,
         },
-        "weekends": [{"label": weekend, "options": grouped[weekend]} for weekend in order],
+        "weekends": [
+            {
+                "label": weekend,
+                "availability_note": weekend_metadata.get(weekend, {}).get("availability_note"),
+                "options": grouped[weekend],
+            }
+            for weekend in order
+        ],
     }
 
 
