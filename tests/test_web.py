@@ -76,6 +76,27 @@ def test_exam_windows_include_realistic_airport_buffers() -> None:
     )
 
 
+def test_friday_free_windows_allow_late_thursday_departures() -> None:
+    config_path = SEED_PATH.parents[1] / "config" / "semester_2026.json"
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    weekends = {weekend["label"]: weekend for weekend in config["weekends"]}
+    expected_departures = {
+        "25–28 Sep": "2026-09-24",
+        "2–5 Oct": "2026-10-01",
+        "9–12 Oct": "2026-10-08",
+        "23–25 Oct": "2026-10-22",
+        "6–9 Nov": "2026-11-05",
+        "20–23 Nov": "2026-11-19",
+        "27–30 Nov": "2026-11-26",
+        "4–7 Dec": "2026-12-03",
+    }
+
+    for label, departure_date in expected_departures.items():
+        assert weekends[label]["departure_date"] == departure_date
+        assert weekends[label]["outbound_earliest_hour"] == 23
+        assert "Thursday" in weekends[label]["availability_note"]
+
+
 def test_web_routes_serve_snapshot(monkeypatch, tmp_path: Path) -> None:
     monkeypatch.setenv("FLI_REFRESH_ENABLED", "false")
     monkeypatch.setenv("FLI_DATA_DIR", str(tmp_path))

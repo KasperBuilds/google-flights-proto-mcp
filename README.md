@@ -204,6 +204,9 @@ blocked query into a false “no flights” result.
 Travel windows can include an `availability_note` plus earliest outbound and
 return hours. Exam-day windows use a realistic airport buffer: an assessment
 ending at 19:30 does not permit a 21:00 departure.
+When Friday has no exam, the corresponding search window starts at 23:00 on
+Thursday so a useful extra evening flight is eligible without assuming the
+traveller is free earlier that day.
 
 ## Bucket-list deal ranking
 
